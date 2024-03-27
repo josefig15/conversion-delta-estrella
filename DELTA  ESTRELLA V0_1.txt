@@ -1,0 +1,77 @@
+
+: prgrmCLEANER
+: Disp "CNVRT DY YD"
+
+: Disp "1)D->Y" 
+: Disp "2)Y->D"
+: Input O
+: If O == 1
+: Then 
+	: Disp "D RA,RB,RC" 
+: Else
+	: Disp "Y R1,R2,R3" 
+: End
+
+// Creacion vectores de trabajo.
+: {3} -> Dim(L1)			// Vector de ingreso de datos.
+: Fill(0,L1)				
+: {3} -> Dim(L2)			// Vector de salida  de datos.
+: Fill(0,L2) 
+
+// Proceso ingreso de rsistencias.
+: For(N,1,3)
+	: Input R
+	: R -> L1(N)
+: End
+
+: 0 -> S 					// Acumulador, Inicia en cero.
+
+// Proceso para encontrar sumatoria.
+
+: For(N,1,3)				// Recorre elementos de L1
+	: If O == 1 
+	: Then								// Cuando es D->Y
+		: S + L1(N) -> S					// sumatoria todos los elementos.					
+	: Else								// Cuando es Y->D
+		: if N < 3							// sumatoria todos los productos.
+			: S + L1(N)*L1(N+1) -> S		// Combinacioes R1,R2 y R2,R3	 
+		: else
+			: s + L1(N)*L1(1)				// Combinacioes R1,R3
+		: End
+	: End
+
+// Proceso para calcular los elementos
+
+: For(N,1,3)
+	: if N < 3
+	: Then
+		: If O == 1						
+		: Then							// Cuando es D->Y
+			: L1(N)*L1(N+1)/S -> L2(N)		// Numerador RA,RB y RB,RC
+		: Else							// Cuando es Y->D
+			: S/L1(N+1) -> L2(N)			// Denominador R2 y R3 		
+		: End
+		
+	: Else
+		: If O == 1
+		: Then							// Cuando es D->Y
+			: L1(N)*L1(1)/S -> L2(N)		// Numerador RA,RC
+		: Else							// Cuando es Y->D
+			: S/L1(1) -> L2(N) 				// Denominador R1
+		: End
+	: End
+: End
+
+// Proceso para mostrar resultados
+: If O == 1
+: Then 
+	: Disp "L2Y R1,R2,R3" 
+	: Disp "R1 OPUESTA A RC"
+	: Disp "R2 OPUESTA A RA"
+	: Disp "R3 OPUESTA A RB"
+: Else
+	: Disp "L2D RA,RB,RC" 	
+	: Disp "RA ENTRE R1 Y R3"
+	: Disp "RB ENTRE R1 Y R2"
+	: Disp "RC ENTRE R3 Y R2"
+: End
