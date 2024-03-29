@@ -1,0 +1,60 @@
+
+
+
+	CONVERSION DELTA - ESTRELLA
+
+				 _ ________RB_______ _ 
+	          / \		\ *	            * /
+	         / * \	         \  *             *  /							
+	        /  *  \	          \   *         *   /				
+	       /   *   \           \    R1    R2   /  
+	      /    R3   \           RA    * *     RC		
+	     RA    *    RC           \     *     /
+	    /     * *     \           \    R3   /  
+	   /    R1    R2   \           \   *   /
+	  /   *         *   \           \  *  /
+	 /  *             *  \           \ * /
+	/_*________RB_______*_\           \ /
+
+	
+	DELTA (D): 	RA, RB, RC
+	ESTRELLA (Y):	R1, R2, R3 
+
+	CONVERTIR Y - D
+
+		RA = ( R1*R2 + R2*R3 + R3*R1 )/ R2
+		RB = ( R1*R2 + R2*R3 + R3*R1 )/ R3
+		RC = ( R1*R2 + R2*R3 + R3*R1 )/ R1
+		
+		COMUN: ( R1*R2 + R2*R3 + R3*R1 ) SUMATORIA
+ 		
+		    (1)  (2)  (3)	
+		L1{ R1 , R2 , R3 } IN	
+		L2{ RA , RB , RC } OUT	
+
+	CONVERTIR D - Y
+
+		R1 = ( RA*RB )/( RA + RB + RC )		
+		R2 = ( RB*RC )/( RA + RB + RC )	
+		R3 = ( RA*RC )/( RA + RB + RC )	
+		
+		COMUN: ( R1 + R2 + R3 )		SUMATORIA
+
+		    (1)  (2)  (3)
+		L1{ RA , RB , RC } IN	
+		L2{ R1 , R2 , R3 } OUT
+
+	
+           
+            
+              
+              
+               
+                
+                 
+                  
+	
+
+
+	
+	
