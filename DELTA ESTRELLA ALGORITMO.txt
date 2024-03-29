@@ -1,0 +1,38 @@
+ALGORITMO PARA CALCULAR CONVERSION ENTRE ARREGLO DELTA-ESTRELLA
+
+ 1) Se ingresa los Resistores en Vector L1
+ 
+ 2) Se calcula la sumatoria de las resistencias dentro de un ciclo For usando Contador N desde 1 hasta 3.
+	
+	2.1) Cuando es cnversion de Delta a Estrella (D -> Y)
+			
+			Realiza sumatoria de todos los Elementos de L1 en Acumulador "S".		
+		
+	2.2) Cuando es cnversion de Estrella a Delta (Y -> D)
+	
+		Cuando N<3 :
+			Realiza sumatoria de Productos R1*R2 ( L1(1)*L1(2) ) y R2*R3 ( L1(2)*L1(3) ) en Acumulador "S".		
+		
+		Cuando N=3 :
+			Realiza sumatoria de Productos R1*R3 ( L1(1)*L1(3) )en Acumulador "S".	
+	
+
+ 3) Se calcula individualmente cada resistor de la conversion dentro ciclo for usando contador N desde 1 hasta 3.
+		
+	3.1) Cuando es cnversion de Delta a Estrella (D -> Y)
+		
+		Cuando N<3 :
+				Calcula R1 ( L2(1) ) con Numerador RA*RB ( L1(1)*L1(2) ) y denominador Acumulador S.
+				Calcula R2 ( L2(2) ) con Numerador RB*RC ( L1(2)*L1(3) ) y denominador Acumulador S.
+		
+		Cuando N=3 :
+				Calcula R3 ( L2(3) ) con Numerador RA*RC ( L1(1)*L1(3) ) y denominador Acumulador S.
+		
+	3.2) Cuando es cnversion de Estrella a Delta (Y -> D)
+	
+		Cuando N<3 :
+				Calcula RA ( L2(1) ) con Nummrador Acumulador S y Denominador R2 ( L1(2) ).
+				Calcula RB ( L2(2) ) con Nummrador Acumulador S y Denominador R3 ( L1(3) ).
+		
+		Cuando N=3 :
+				Calcula RC ( L2(3) ) con Numerador Acumulador S y Denominador R1 ( L1(1) ).
