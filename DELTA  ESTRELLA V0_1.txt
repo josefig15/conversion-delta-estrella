@@ -1,5 +1,4 @@
 
-: prgrmCLEANER
 : Disp "CNVRT DY YD"
 
 : Disp "1)D->Y" 
